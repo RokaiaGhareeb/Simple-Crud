@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <br />
+    <br />
+   <table class="table table-bordered">
+       <tr>
+           <th> @Html.DisplayNameFor(ww => ww.Name) </th>
+           <th> @Html.DisplayNameFor(ww => ww.Age) </th>
+           <th> @Html.DisplayNameFor(ww => ww.Department.DeptName) </th>
+           <th> @Html.DisplayNameFor(ww => ww.Salary) </th>
+           <th colspan="3" class="text-center">
+                <a asp-action="Create" class="btn btn-dark">Create</a>
+           </th>
+       </tr>
+       @foreach(var item in Model)
+            {
+   <tr>
+       <td> @Html.DisplayFor(ww => item.Name) </td>
+       <td> @Html.DisplayFor(ww => item.Age) </td>
+       <td> @Html.DisplayFor(ww => item.Department.DeptName) </td>
+       <td> @Html.DisplayFor(ww => item.Salary) </td>
+       <td>
+           <a asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-dark">Edit</a>
+       </td>
+       <td>
+           <a asp-action="Delete" asp-route-Id="@item.Id"  class="btn btn-dark" onclick="return confirm('Are you sure?')">Delete</a>
+       </td>
+       <td>
+           <a asp-action="Details" asp-route-Id="@item.Id" class="btn btn-dark">Details</a>
+       </td>
+   </tr>
+            }
+   </table>
+</div>
